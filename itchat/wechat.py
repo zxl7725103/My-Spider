@@ -25,7 +25,7 @@ def response(msg):
         print(r)
         return r['results'][0]['values']['text']
     except:
-        return None
+        return
 
 @itchat.msg_register(itchat.content.TEXT)
 def tuling_reply(msg):
