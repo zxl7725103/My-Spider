@@ -1,0 +1,6 @@
+import tushare as ts
+
+ts.set_token('c3db9519dd3071c63df5a886bff73f68c26b4eabaff2feb6f278613d')
+pro=ts.pro_api()
+df = pro.daily(ts_code='000001.SZ', start_date='20181213', end_date='20181214')
+print(df.trade_date,df.pct_chg)
