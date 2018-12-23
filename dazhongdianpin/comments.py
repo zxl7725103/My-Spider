@@ -55,8 +55,8 @@ def Getbasic_messege(url):
     basic_messegae['tel']=re.findall(r'</span>(.*?)</p>',change(dt,str(soup.find('p',class_='expand-info tel'))))[0]
     #加上[0]，可以提起里面里面的字符串。提取电话的明文，进行整体替换后，就为电话号码的明文
     basic_messegae['comments_num']=re.findall(r'> (.*?) 条评论',change(dt,str(soup.find('span',id="reviewCount"))))[0]
-    e=change(dt,str(soup.find('span',id="avgPriceTitle"))
-    basic_messegae['人均:']=re.findall(r'>人均: (.*?)</span>',e)[0])
+    e=change(dt,str(soup.find('span',id="avgPriceTitle")))
+    basic_messegae['人均:']=re.findall(r'>人均: (.*?)</span>',e)[0]
     print(basic_messegae)
 
 dt=numbers()
