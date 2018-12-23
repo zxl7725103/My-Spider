@@ -26,7 +26,7 @@ def numbers():
                     next(i)
             except:
                 pass
-    print(d)
+    #print(d)
     return d
 #把键值对替换为对应的字符
 def change(dic,text):
@@ -51,10 +51,13 @@ def Getbasic_messege(url):
     response=requests.get(url,headers=headers)
     #print(response.text)
     soup=BeautifulSoup(response.text,'lxml')
-
-    tel_soup=re.findall(r'</span>(.*?)</p>',change(dt,str(soup.find('p',class_='expand-info tel'))))[0]
+    basic_messegae={}
+    basic_messegae['tel']=re.findall(r'</span>(.*?)</p>',change(dt,str(soup.find('p',class_='expand-info tel'))))[0]
     #加上[0]，可以提起里面里面的字符串。提取电话的明文，进行整体替换后，就为电话号码的明文
-    print(tel_soup)
+    basic_messegae['comments_num']=re.findall(r'> (.*?) 条评论',change(dt,str(soup.find('span',id="reviewCount"))))[0]
+    e=change(dt,str(soup.find('span',id="avgPriceTitle"))
+    basic_messegae['人均:']=re.findall(r'>人均: (.*?)</span>',e)[0])
+    print(basic_messegae)
 
 dt=numbers()
 url='http://www.dianping.com/shop/93195650'
